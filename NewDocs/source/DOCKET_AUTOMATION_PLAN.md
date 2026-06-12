@@ -312,12 +312,13 @@ Shiva's source folder structure (sync bot must handle this exactly):
 | `Formation_Docs/` | `*Operating*` or `*Agreement*` | `A8_Formation_Docs/` | `A8b_OperatingAgreement.pdf` |
 | `Formation_Docs/` | `*Profit*` or `*Resolution*` | `A8_Formation_Docs/` | `A8c_ProfitShare_Resolutions.pdf` |
 
-#### A9 — Hancock Whitney HWB-0639 Bank Statements (NEW June 12 — second DATAFLAKE business account, acct 72500639)
+#### A9 — SUPERSEDED June 12 evening (user decision: Hancock Whitney = DATAFLAKE business bank → A7, NOT A9)
+
+Do NOT create or route into `A9_HWB0639_Bank_Statements`. Hancock Whitney acct 72500639 statements go to A7 instead (Mar–May 2026 already moved manually June 12 — skip if present):
 
 | Source Folder | Source File Pattern | → Docket Folder | Renamed As |
 |---|---|---|---|
-| `2026/BankStatements/2026/Hancock Bank/` | `*.pdf` | `A9_HWB0639_Bank_Statements/2026/` | `A9_HWB0639_2026_{MM}_{filename}` |
-| `99_Admin/UNMAPPED/` (docket) | `HANCOCKWHITNEY_72500639_*.pdf` | `A9_HWB0639_Bank_Statements/2026/` | `A9_HWB0639_{filename minus UNMAPPED suffix}` |
+| `2026/BankStatements/2026/Hancock Bank/` | `*.pdf` | `A7_BOA9229_Bank_Statements/2026/` | `A7_HWB0639_2026_{MM}_{filename}` |
 
 ---
 
@@ -396,22 +397,9 @@ Shiva's source folder structure (sync bot must handle this exactly):
 |---|---|---|---|
 | `Capital_Account/` | `*Sweat*` or `*Founder*` or `*Services*` | `B8_Sweat_Equity/` | `B8_SweatEquity_Resolution.pdf` |
 
-#### B9 — Identity & Immigration Docs (NEW June 12 — re-routed from 99_Admin/UNMAPPED; supports Issue #2 personal history)
+#### B9 — SUPERSEDED June 12 evening (user decision: identity/immigration docs → B6, NOT B9)
 
-The bot copies these FROM the docket `99_Admin/UNMAPPED/` folder (and from source if found later) into `B9_Identity_Immigration_Docs/`, stripping the `UNMAPPED_`/`_UNMAPPED` name parts and adding a `B9_` prefix:
-
-| Source File Pattern (in UNMAPPED or source) | → Docket Folder | Renamed As |
-|---|---|---|
-| `*BIRTHCERT*` / `*BirthCertificate*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
-| `*I94*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
-| `*EAD*` (incl. `H4EAD_*` receipt/RFE/approval/decision) | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
-| `*H4APPROVAL*` / `*I539APPROVAL*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
-| `*Passport*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
-| `MARRIAGECERTIFICATE*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
-| `*RESUME*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
-| `*EMPLOYMENTVERIF*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
-
-After copying, flag the original UNMAPPED copies for manual deletion in the sync log.
+Do NOT create or route into `B9_Identity_Immigration_Docs`. The ~17 identity/immigration/family docs (birth certs, I-94s, EADs, H-4/I-539, passports, marriage cert, resume, employment verification) were manually moved from `99_Admin/UNMAPPED/` to `B6_Employment_Gap_Declaration/` on June 12. No bot action needed — if stale copies remain in UNMAPPED, list them under MANUAL DELETION in the sync log. Any NEW files matching these patterns found in source also go to `B6_Employment_Gap_Declaration/`.
 
 ---
 
