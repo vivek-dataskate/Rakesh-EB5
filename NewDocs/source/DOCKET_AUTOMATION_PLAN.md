@@ -41,7 +41,23 @@ The sync routine **trig_01YD9atrhb6SStwi1BCqjUjV** was updated on June 12, 2026 
 - Subfolder routing added for A2 (year/quarter), A3 (year + CPA_Attestation), A5/A7 (year), B1 (US/India/CA_Letter), B5 (W2_1099/BOA5127)
 - D3 folder name aligned to `D3_Subscription_Agreement` (routine previously created `D3_Subscription_Docs` — deprecated, do not use)
 
-**⚠️ VERIFY IN NEXT SESSION:** A manual sync was triggered June 12, 2026 after the update. Check `99_Admin/SYNC_LOG.md` in the docket Drive for the run result — confirm files landed in correct subfolders and review the UNMAPPED list.
+### ✅ VERIFIED — Sync run 2026-06-12T22:22 UTC (log: `99_Admin/SYNC_LOG_2026-06-12T2222.md`)
+
+Result: **23 copied** (14× Federal 941 → correct year/quarter subfolders, 1× State Annual 2022, 5× A3 financials → year subfolders, 3× B5 W2s), **5 skipped** (already present), **5 unmapped**, **5 flags**. Mapping rules were read from the repo. Confirmed source-path corrections have been folded into Part 3 below.
+
+**Open items from this run (next session / human):**
+| # | Item | Action |
+|---|------|--------|
+| 1 | `CP_INPDATAFLA_*.pdf` in `Quarterly state tax returns/{2024,2025,2026}/` → UNMAPPED | Confirm with Shiva these are TX Comptroller franchise docs; if yes add Part 3 rule + re-sync |
+| 2 | Hancock Whitney `HWB0639_Statement_*.pdf` (acct 72500639, Mar–May 2026) → UNMAPPED | New bank account not in plan — decide docket folder (new A-series?) with counsel/Shiva |
+| 3 | State Quarterly files NOT synced — June 11 inventory saw `{Q# YEAR}/{State}/` subfolders (CO, KS, MO, NY) but June 12 run copied none | Verify source still has them; check State_Quarterly docket folders; may need re-sync |
+| 4 | 941 gaps: 2022 Q1–Q2 and 2023 Q4 not in source; a misplaced `Payroll_941_2024_Q4.pdf` sits in `2023/QuarterlyTaxes/` | Ask Shiva: upload missing 941s (or confirm not filed) and remove the misplaced 2024 Q4 copy |
+| 5 | FLAG-1: all 50 BOA-9229 statements at A7 root from prior syncs; year subfolders empty | Decide: keep root layout or move into year subfolders (no duplicates) |
+| 6 | FLAG-2/5: redundant root-level files in A3 and B5 from prior syncs | Review/archive to avoid attorney confusion |
+| 7 | FLAG-3: verify source `FedReturn_2022/Taxreturns_2023` = docket `Form1065` PDFs | If different docs, copy with A1a/A1b names |
+| 8 | FLAG-4: no `Personal_BankStatements_Bhargavi` folder in source — B5/BOA5127_Statements empty | Shiva/Rakesh to upload BOA-5127 statements |
+| 9 | Bot wrote a NEW `SYNC_LOG.md` + timestamped log instead of appending (two SYNC_LOG.md now in 99_Admin) | Minor — consolidate logs or amend routine prompt to use timestamped log names |
+| 10 | Missing in source: 2024 Balance Sheet; 2022 Financials are Google-Docs placeholders only | Ask Shiva for PDFs |
 
 ---
 
@@ -85,10 +101,10 @@ All response documents are uploaded to Docket Drive. To edit: open in Google Dri
 
 Shiva's source folder structure (sync bot must handle this exactly):
 - Annual federal returns: `{YEAR}/YearlyTax/`
-- TX Franchise tax: `Quarterly state tax returns/` (root-level folder, misleadingly named)
-- Federal 941: `{YEAR}/QuarterlyTaxes/{Q# YEAR}/` root-level PDFs — **path TBD, confirm when Shiva uploads first 941**
-- State quarterly returns: `{YEAR}/QuarterlyTaxes/{Q# YEAR}/{State}/` — note the state subfolder level
-- State annual returns: **TBD — Shiva has not uploaded yet; confirm folder path and update rows below**
+- TX Franchise tax: `Quarterly state tax returns/{YEAR}/` — actual filenames are `CP_INPDATAFLA_*.pdf` (**pending confirmation these are TX franchise docs — currently routed to UNMAPPED**)
+- Federal 941: **CONFIRMED June 12, 2026** — `{YEAR}/QuarterlyTaxes/` root (NOT in `{Q# YEAR}/` subfolders), filenames `Payroll_941_{YEAR}_Q{n}.pdf`; derive year+quarter from the filename
+- State quarterly returns: `{YEAR}/QuarterlyTaxes/{Q# YEAR}/{State}/` — seen in June 11 inventory (CO/KS/MO/NY) but NOT picked up by the June 12 run — re-verify these paths and recurse into state subfolders
+- State annual returns: **CONFIRMED June 12, 2026** — `{YEAR}/QuarterlyTaxes/` root, filename like `Annual State Returns — {YEAR}.pdf` (2022 found; watch for other years)
 - Financials: `{YEAR}/Financials/`
 - Bank statements: `{YEAR}/BankStatements/`
 - Vendor contracts: `{YEAR}/{ClientName}/`
@@ -117,7 +133,7 @@ Shiva's source folder structure (sync bot must handle this exactly):
 | `Quarterly state tax returns/` | `*2024*.pdf` | `A2_State_and_Quarterly_Returns/TX_Franchise/2024/` | `A2c_TX_Franchise_2024_{filename}` |
 | `Quarterly state tax returns/` | `*2025*.pdf` | `A2_State_and_Quarterly_Returns/TX_Franchise/2025/` | `A2d_TX_Franchise_2025_{filename}` |
 
-**Federal_941/** (root-level PDFs in each quarter folder — path TBD, update when confirmed):
+**Federal_941/** (CONFIRMED June 12, 2026: source PDFs live at `{YEAR}/QuarterlyTaxes/` root named `Payroll_941_{YEAR}_Q{n}.pdf` — match on filename year+quarter, NOT on a `{Q# YEAR}/` subfolder; the Source Folder column below is the legacy assumption kept for reference. 2022 Q3–2026 Q1 synced June 12 as exhibits A2c–A2p):
 
 | Source Folder | Source File Pattern | → Docket Folder | Renamed As |
 |---|---|---|---|
@@ -161,14 +177,14 @@ Shiva's source folder structure (sync bot must handle this exactly):
 | `2025/QuarterlyTaxes/Q4 2025/{State}/` | `*.pdf` | `A2_State_and_Quarterly_Returns/State_Quarterly/2025/Q4/` | `A2t_State_Q4_2025_{State}_{filename}` |
 | `2026/QuarterlyTaxes/Q1 2026/{State}/` | `*.pdf` | `A2_State_and_Quarterly_Returns/State_Quarterly/2026/Q1/` | `A2u_State_Q1_2026_{State}_{filename}` |
 
-**State_Annual/** (NEW — source path TBD; update rows when Shiva uploads first annual state return):
+**State_Annual/** (CONFIRMED June 12, 2026: source path is `{YEAR}/QuarterlyTaxes/` root, filename like `Annual State Returns — {YEAR}.pdf`; 2022 synced June 12 as A2v):
 
 | Source Folder | Source File Pattern | → Docket Folder | Renamed As |
 |---|---|---|---|
-| `2022/StateAnnual/` *(TBD)* | `*.pdf` | `A2_State_and_Quarterly_Returns/State_Annual/2022/` | `A2v_State_Annual_2022_{filename}` |
-| `2023/StateAnnual/` *(TBD)* | `*.pdf` | `A2_State_and_Quarterly_Returns/State_Annual/2023/` | `A2w_State_Annual_2023_{filename}` |
-| `2024/StateAnnual/` *(TBD)* | `*.pdf` | `A2_State_and_Quarterly_Returns/State_Annual/2024/` | `A2x_State_Annual_2024_{filename}` |
-| `2025/StateAnnual/` *(TBD)* | `*.pdf` | `A2_State_and_Quarterly_Returns/State_Annual/2025/` | `A2y_State_Annual_2025_{filename}` |
+| `2022/QuarterlyTaxes/` | `*Annual*State*.pdf` | `A2_State_and_Quarterly_Returns/State_Annual/2022/` | `A2v_State_Annual_2022_{filename}` |
+| `2023/QuarterlyTaxes/` | `*Annual*State*.pdf` | `A2_State_and_Quarterly_Returns/State_Annual/2023/` | `A2w_State_Annual_2023_{filename}` |
+| `2024/QuarterlyTaxes/` | `*Annual*State*.pdf` | `A2_State_and_Quarterly_Returns/State_Annual/2024/` | `A2x_State_Annual_2024_{filename}` |
+| `2025/QuarterlyTaxes/` | `*Annual*State*.pdf` | `A2_State_and_Quarterly_Returns/State_Annual/2025/` | `A2y_State_Annual_2025_{filename}` |
 
 #### A3 — Audited Financials (year subfolders + CPA_Attestation subfolder)
 
