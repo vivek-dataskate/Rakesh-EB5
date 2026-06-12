@@ -1,7 +1,7 @@
 # EB-5 Docket Automation Plan
 **Petitioner:** Bhargavi Jaggarapu | Receipt: IOE0934124117 | A-Number: A138-176-449
 **Response Deadline: July 6, 2026**
-**Last updated:** June 12, 2026
+**Last updated:** June 12, 2026 ~23:00 UTC (sync run in flight — see IN FLIGHT section)
 
 **Docket root:** https://drive.google.com/drive/u/1/folders/0ALgmUtYnXvW3Uk9PVA
 **Sync routine:** trig_01YD9atrhb6SStwi1BCqjUjV (every 6 hours — auto-copies source → docket)
@@ -53,6 +53,17 @@ Result: **23 copied** (14× Federal 941 → correct year/quarter subfolders, 1×
 | 3 | ~15 personal immigration/identity docs sitting in UNMAPPED (birth certs, I-94s, EADs, H-4/I-539, marriage cert, resume, MassMutual employment verification) | New folder **B9_Identity_Immigration_Docs** under 02_Issue2_Personal_Employment; bot re-routes them from UNMAPPED (rules added) |
 | 4 | 50 BOA-9229 statements at A7 root; year subfolders empty | Bot copies root files into `A7/{YEAR}/` subfolders; root copies + superseded A3/B5 root files flagged for MANUAL deletion (Drive MCP cannot delete) |
 | 5 | State Quarterly files missed by June 12 run — source verified to still have `{Q# YEAR}/{State}/` PDFs (e.g. `Q3 2022/Colorado/Colorado_Q3 DOR.pdf`) | Routine bug — recursion instruction strengthened; will sync next run |
+
+### ⏳ IN FLIGHT AT SESSION END (June 12, ~23:00 UTC) — FIRST THING NEXT SESSION
+
+A sync run with ALL June 12 decisions started ~22:50 UTC and was still running at session end (confirmed progress: A9_HWB0639_Bank_Statements and B9_Identity_Immigration_Docs folders created 22:57–22:58, A7/2026 and TX_Franchise/2026 created). **Next session: find the new `SYNC_LOG_2026-06-12T*.md` in 99_Admin (folder `1Ev8CqG0ck5uhONp60aW6dPcfSrO1q2rp`) and verify:**
+1. State Quarterly files synced (previous run's recursion miss — fix in routine Step 3; expect files like `Q3 2022/Colorado/Colorado_Q3 DOR.pdf` → `State_Quarterly/2022/Q3/`)
+2. CP_INPDATAFLA copies landed in `Federal_941/{year}/Q{n}/` as `A2_941_CP_*`
+3. A9/2026 has Hancock statements; B9 has the ~15 identity docs re-routed from UNMAPPED
+4. A7 root statements copied into year subfolders
+5. Relay the log's MANUAL DELETION list to Vivek/Shiva (bot never deletes)
+
+If the run failed or stalled, re-trigger: `RemoteTrigger action=run trigger_id=trig_01YD9atrhb6SStwi1BCqjUjV` (routine prompt is already correct; cron continues every 6h regardless).
 
 **Still open (ASK SHIVA):**
 - Upload real TX Franchise returns (the `Quarterly state tax returns/` folder only has 941 duplicates)
