@@ -45,19 +45,22 @@ The sync routine **trig_01YD9atrhb6SStwi1BCqjUjV** was updated on June 12, 2026 
 
 Result: **23 copied** (14× Federal 941 → correct year/quarter subfolders, 1× State Annual 2022, 5× A3 financials → year subfolders, 3× B5 W2s), **5 skipped** (already present), **5 unmapped**, **5 flags**. Mapping rules were read from the repo. Confirmed source-path corrections have been folded into Part 3 below.
 
-**Open items from this run (next session / human):**
-| # | Item | Action |
-|---|------|--------|
-| 1 | `CP_INPDATAFLA_*.pdf` in `Quarterly state tax returns/{2024,2025,2026}/` → UNMAPPED | Confirm with Shiva these are TX Comptroller franchise docs; if yes add Part 3 rule + re-sync |
-| 2 | Hancock Whitney `HWB0639_Statement_*.pdf` (acct 72500639, Mar–May 2026) → UNMAPPED | New bank account not in plan — decide docket folder (new A-series?) with counsel/Shiva |
-| 3 | State Quarterly files NOT synced — June 11 inventory saw `{Q# YEAR}/{State}/` subfolders (CO, KS, MO, NY) but June 12 run copied none | Verify source still has them; check State_Quarterly docket folders; may need re-sync |
-| 4 | 941 gaps: 2022 Q1–Q2 and 2023 Q4 not in source; a misplaced `Payroll_941_2024_Q4.pdf` sits in `2023/QuarterlyTaxes/` | Ask Shiva: upload missing 941s (or confirm not filed) and remove the misplaced 2024 Q4 copy |
-| 5 | FLAG-1: all 50 BOA-9229 statements at A7 root from prior syncs; year subfolders empty | Decide: keep root layout or move into year subfolders (no duplicates) |
-| 6 | FLAG-2/5: redundant root-level files in A3 and B5 from prior syncs | Review/archive to avoid attorney confusion |
-| 7 | FLAG-3: verify source `FedReturn_2022/Taxreturns_2023` = docket `Form1065` PDFs | If different docs, copy with A1a/A1b names |
-| 8 | FLAG-4: no `Personal_BankStatements_Bhargavi` folder in source — B5/BOA5127_Statements empty | Shiva/Rakesh to upload BOA-5127 statements |
-| 9 | Bot wrote a NEW `SYNC_LOG.md` + timestamped log instead of appending (two SYNC_LOG.md now in 99_Admin) | Minor — consolidate logs or amend routine prompt to use timestamped log names |
-| 10 | Missing in source: 2024 Balance Sheet; 2022 Financials are Google-Docs placeholders only | Ask Shiva for PDFs |
+**Decisions made June 12, 2026 (evening session, by Vivek) — implemented in Part 3 + routine:**
+| # | Finding | Decision |
+|---|---------|----------|
+| 1 | `CP_INPDATAFLA_*.pdf` files are byte-identical duplicates of `Payroll_941_*` files (sizes match exactly); real TX Franchise returns are NOT in source | Map CP files to Federal_941 anyway (rule added); ask Shiva to upload actual TX Franchise returns |
+| 2 | Hancock Whitney acct 72500639 statements (Mar–May 2026) — second business bank account | New folder **A9_HWB0639_Bank_Statements** under 01_Issue1_DATAFLAKE (rule added) |
+| 3 | ~15 personal immigration/identity docs sitting in UNMAPPED (birth certs, I-94s, EADs, H-4/I-539, marriage cert, resume, MassMutual employment verification) | New folder **B9_Identity_Immigration_Docs** under 02_Issue2_Personal_Employment; bot re-routes them from UNMAPPED (rules added) |
+| 4 | 50 BOA-9229 statements at A7 root; year subfolders empty | Bot copies root files into `A7/{YEAR}/` subfolders; root copies + superseded A3/B5 root files flagged for MANUAL deletion (Drive MCP cannot delete) |
+| 5 | State Quarterly files missed by June 12 run — source verified to still have `{Q# YEAR}/{State}/` PDFs (e.g. `Q3 2022/Colorado/Colorado_Q3 DOR.pdf`) | Routine bug — recursion instruction strengthened; will sync next run |
+
+**Still open (ASK SHIVA):**
+- Upload real TX Franchise returns (the `Quarterly state tax returns/` folder only has 941 duplicates)
+- Missing 941s: 2022 Q1–Q2, 2023 Q4 (or confirm not filed); remove misplaced `Payroll_941_2024_Q4.pdf` from `2023/QuarterlyTaxes/`
+- Missing: 2024 Balance Sheet PDF; 2022 Financials (currently Google-Docs placeholders only)
+- Upload Bhargavi's BOA-5127 personal statements (no `Personal_BankStatements_Bhargavi` folder exists in source)
+- Verify source `FedReturn_2022`/`Taxreturns_2023` are the same docs as docket `Form1065` PDFs (FLAG-3)
+- Manual deletions (Drive MCP can't delete): A7 root statements after year-subfolder copies verified; redundant A3/B5 root copies; stale UNMAPPED copies after B9/A9 re-routing
 
 ---
 
@@ -101,7 +104,7 @@ All response documents are uploaded to Docket Drive. To edit: open in Google Dri
 
 Shiva's source folder structure (sync bot must handle this exactly):
 - Annual federal returns: `{YEAR}/YearlyTax/`
-- TX Franchise tax: `Quarterly state tax returns/{YEAR}/` — actual filenames are `CP_INPDATAFLA_*.pdf` (**pending confirmation these are TX franchise docs — currently routed to UNMAPPED**)
+- TX Franchise tax: **NOT IN SOURCE** — `Quarterly state tax returns/{YEAR}/` contains only `CP_INPDATAFLA_{YYMMDD}.pdf` files, which are byte-identical duplicates of the federal 941s (confirmed June 12 by size match). Per decision: map CP files to Federal_941 (see rule below). Real TX Franchise returns awaited from Shiva — TX_Franchise mapping rows stay as-is for when they arrive
 - Federal 941: **CONFIRMED June 12, 2026** — `{YEAR}/QuarterlyTaxes/` root (NOT in `{Q# YEAR}/` subfolders), filenames `Payroll_941_{YEAR}_Q{n}.pdf`; derive year+quarter from the filename
 - State quarterly returns: `{YEAR}/QuarterlyTaxes/{Q# YEAR}/{State}/` — seen in June 11 inventory (CO/KS/MO/NY) but NOT picked up by the June 12 run — re-verify these paths and recurse into state subfolders
 - State annual returns: **CONFIRMED June 12, 2026** — `{YEAR}/QuarterlyTaxes/` root, filename like `Annual State Returns — {YEAR}.pdf` (2022 found; watch for other years)
@@ -155,7 +158,13 @@ Shiva's source folder structure (sync bot must handle this exactly):
 | `2025/QuarterlyTaxes/Q4 2025/` | `*941*.pdf` | `A2_State_and_Quarterly_Returns/Federal_941/2025/Q4/` | `A2t_Federal_941_2025_Q4_{filename}` |
 | `2026/QuarterlyTaxes/Q1 2026/` | `*941*.pdf` | `A2_State_and_Quarterly_Returns/Federal_941/2026/Q1/` | `A2u_Federal_941_2026_Q1_{filename}` |
 
-**State_Quarterly/** (Shiva uses `{Q# YEAR}/{State}/` — sync bot recurses into each state subfolder):
+**Federal_941 supplementary copies** (added June 12 — `CP_INPDATAFLA_{YYMMDD}.pdf` files are duplicate 941 copies; decode year/quarter from the YYMMDD quarter-end date, e.g. `250630` → 2025 Q2):
+
+| Source Folder | Source File Pattern | → Docket Folder | Renamed As |
+|---|---|---|---|
+| `Quarterly state tax returns/{YEAR}/` | `CP_INPDATAFLA_*.pdf` | `A2_State_and_Quarterly_Returns/Federal_941/{20YY}/Q{n}/` | `A2_941_CP_{filename}` |
+
+**State_Quarterly/** (Shiva uses `{Q# YEAR}/{State}/` — sync bot MUST recurse into each state subfolder. ⚠️ The June 12 run missed these entirely; verified files exist, e.g. `2022/QuarterlyTaxes/Q3 2022/Colorado/Colorado_Q3 DOR.pdf`. State folder names vary in case/spacing ("MISSOURI", "New York "). Skip 1KB Google-Docs placeholders named DOR/DOL/941 — only copy real PDFs):
 
 | Source Folder | Source File Pattern | → Docket Folder | Renamed As |
 |---|---|---|---|
@@ -230,6 +239,8 @@ Shiva's source folder structure (sync bot must handle this exactly):
 
 #### A7 — BOA-9229 Bank Statements (year subfolders — 12 monthly files per year)
 
+**Remediation (June 12 decision):** prior runs placed all 50 statements at A7 root as `A7_BOA9229_YYYY-MM.pdf`. Sync bot must copy each root file into `A7_BOA9229_Bank_Statements/{YYYY}/` (create a 2026 subfolder; keep the same filename; skip if already in the year subfolder). Root copies are then flagged for MANUAL deletion — the bot never deletes.
+
 | Source Folder | Source File Pattern | → Docket Folder | Renamed As |
 |---|---|---|---|
 | `2022/BankStatements/` | `*Jan*.pdf` or `*01*.pdf` | `A7_BOA9229_Bank_Statements/2022/` | `A7a_BOA9229_2022_01_Jan.pdf` |
@@ -255,6 +266,13 @@ Shiva's source folder structure (sync bot must handle this exactly):
 | `Formation_Docs/` | `*Certificate*` or `*Formation*` | `A8_Formation_Docs/` | `A8a_CertificateOfFormation.pdf` |
 | `Formation_Docs/` | `*Operating*` or `*Agreement*` | `A8_Formation_Docs/` | `A8b_OperatingAgreement.pdf` |
 | `Formation_Docs/` | `*Profit*` or `*Resolution*` | `A8_Formation_Docs/` | `A8c_ProfitShare_Resolutions.pdf` |
+
+#### A9 — Hancock Whitney HWB-0639 Bank Statements (NEW June 12 — second DATAFLAKE business account, acct 72500639)
+
+| Source Folder | Source File Pattern | → Docket Folder | Renamed As |
+|---|---|---|---|
+| `2026/BankStatements/2026/Hancock Bank/` | `*.pdf` | `A9_HWB0639_Bank_Statements/2026/` | `A9_HWB0639_2026_{MM}_{filename}` |
+| `99_Admin/UNMAPPED/` (docket) | `HANCOCKWHITNEY_72500639_*.pdf` | `A9_HWB0639_Bank_Statements/2026/` | `A9_HWB0639_{filename minus UNMAPPED suffix}` |
 
 ---
 
@@ -332,6 +350,23 @@ Shiva's source folder structure (sync bot must handle this exactly):
 | Source Folder | Source File Pattern | → Docket Folder | Renamed As |
 |---|---|---|---|
 | `Capital_Account/` | `*Sweat*` or `*Founder*` or `*Services*` | `B8_Sweat_Equity/` | `B8_SweatEquity_Resolution.pdf` |
+
+#### B9 — Identity & Immigration Docs (NEW June 12 — re-routed from 99_Admin/UNMAPPED; supports Issue #2 personal history)
+
+The bot copies these FROM the docket `99_Admin/UNMAPPED/` folder (and from source if found later) into `B9_Identity_Immigration_Docs/`, stripping the `UNMAPPED_`/`_UNMAPPED` name parts and adding a `B9_` prefix:
+
+| Source File Pattern (in UNMAPPED or source) | → Docket Folder | Renamed As |
+|---|---|---|
+| `*BIRTHCERT*` / `*BirthCertificate*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
+| `*I94*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
+| `*EAD*` (incl. `H4EAD_*` receipt/RFE/approval/decision) | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
+| `*H4APPROVAL*` / `*I539APPROVAL*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
+| `*Passport*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
+| `MARRIAGECERTIFICATE*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
+| `*RESUME*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
+| `*EMPLOYMENTVERIF*` | `B9_Identity_Immigration_Docs/` | `B9_{cleaned filename}` |
+
+After copying, flag the original UNMAPPED copies for manual deletion in the sync log.
 
 ---
 
