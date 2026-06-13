@@ -165,10 +165,10 @@ F1–F7 sent to Shiva via tracker + HTML June 13. F8–F12 are new (June 13 veri
 
 | Code | Fix | Folder | By When |
 |------|-----|--------|---------|
-| F1 | Re-upload NY Q4 2022 DOR (0-byte file) | `2022/QuarterlyTaxes/Q4 2022/New York/` | Jun 14 |
-| F2 | Upload MO Q3 2022 DOR (DOL only, DOR missing) | `2022/QuarterlyTaxes/Q3 2022/MISSOURI/` | Jun 14 |
-| F3 | Delete duplicate `Q3-2023-2` folder (move files to `Q3_2023` first) | `2023/QuarterlyTaxes/` | Jun 14 |
-| F4 | Move misplaced `Payroll_941_2024_Q4.pdf` from 2023 root → 2024 folder | `2024/QuarterlyTaxes/` | Jun 14 |
+| F1 | Re-upload NY Q4 2022 DOR (0-byte file) | `2022/QuarterlyTaxes/Q4 2022/New York/` | **BACKLOG** — needs payroll portal access (Shiva) |
+| F2 | Upload MO Q3 2022 DOR (DOL only, DOR missing) | `2022/QuarterlyTaxes/Q3 2022/MISSOURI/` | **BACKLOG** — needs payroll portal access (Shiva) |
+| F3 | ~~Delete duplicate `Q3-2023-2` folder~~ | — | ✅ RESOLVED — sync already merged both Q3 folders into docket with deduplication |
+| F4 | ~~Move misplaced `Payroll_941_2024_Q4.pdf`~~ | — | ✅ RESOLVED — sync derived year from filename; A2k_941_2024_Q4 correctly in docket |
 | F5 | Upload actual TX Franchise Tax Annual Reports 2022–2025 | `Quarterly state tax returns/` | Jun 16 |
 | F6 | Upload 2022 Q1 + Q2 state quarterly returns (all states) | `2022/QuarterlyTaxes/Q1 2022/{State}/` and `Q2 2022/` | Jun 18 |
 | F7 | Rename typo folder `Missour` → `Missouri` | `2023/QuarterlyTaxes/Q1_ 2023/` | Jun 18 |
