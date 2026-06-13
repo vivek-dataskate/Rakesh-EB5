@@ -1,7 +1,7 @@
 # EB-5 Docket Automation Plan
 **Petitioner:** Bhargavi Jaggarapu | Receipt: IOE0934124117 | A-Number: A138-176-449
 **Response Deadline: July 6, 2026**
-**Last updated:** June 12, 2026 ~23:30 UTC (2022 State Quarterly backfilled manually; 2023/2026 state folders discovered in source — rules updated, routine re-triggered)
+**Last updated:** June 13, 2026 ~11:00 UTC (session closed — full status below)
 
 **Docket root:** https://drive.google.com/drive/u/1/folders/0ALgmUtYnXvW3Uk9PVA
 **Sync routine:** trig_01YD9atrhb6SStwi1BCqjUjV (every 6 hours — auto-copies source → docket)
@@ -74,26 +74,46 @@ All UNMAPPED files and old A2 folder contents have been manually resolved. **Do 
 
 **Sync routine note:** Add ignore rule — never copy `.html` Shiva instruction files or `.md` files to docket (see Part 3 ignore rules below).
 
-### ⏳ STILL PENDING — CHECK NEXT SESSION
+### ✅ COMPLETED THIS SESSION (June 12–13, 2026)
 
-1. ✅ DONE June 12 ~23:06 UTC — 2022 State Quarterly backfilled manually via Drive MCP: **18 PDFs** copied to `State_Quarterly/2022/Q3` (6) and `/Q4` (12). Log: `99_Admin/SYNC_LOG_2026-06-12T2306_StateQuarterly.md`. Q4 2022 had **7 states** (CO/KS/MO/NY + Michigan/Massachusetts/Arkansas).
-2. ⚠️ NEW June 12 ~23:20 UTC — 2023 Q1/Q2/Q3 and 2026 Q1 state folders DO exist in source (10+ states each: VA/OH/GA/CT/NJ/WA/PA/AL/IL/AZ/MI/MA/DE/FL/KS/CO/MO/NY/AR...), under variant quarter-folder names `Q1_ 2023`, `Q2_2023`, `Q3_2023`, `Q3-2023-2`, `Q1-2026`. Mapping rules updated below; routine re-triggered — **VERIFY next session** these landed in `State_Quarterly/2023/Q1–Q3` and `/2026/Q1`. (An earlier note in SYNC_LOG_2026-06-12T2306 claiming 2023–2026 had no state folders is WRONG — see the 2330 addendum log.)
-3. CP_INPDATAFLA copies — confirm in `Federal_941/{year}/Q{n}/`
-4. A7 root statements — copy into year subfolders; delete root copies after verification
-5. Relay manual deletion list to Vivek/Shiva
+| Item | Status |
+|------|--------|
+| 2022 State Quarterly backfilled — 18 PDFs to `State_Quarterly/2022/Q3` (6) and `/Q4` (12) | ✅ Done June 12 ~23:06 UTC |
+| Discovered 2023 Q1/Q2/Q3 + 2026 Q1 state folders in source (10–15 states each) | ✅ Documented |
+| Part 3 rules updated: fuzzy quarter-folder matching, skip in-state 941 dups / 0-byte / placeholders | ✅ Committed 08d03a2 |
+| A9/B9 mapping tables marked SUPERSEDED (HW→A7, identity docs→B6) | ✅ Committed 23ab202 |
+| Sync routine prompt updated via RemoteTrigger — fixed recursion, removed stale A9/B9 instructions | ✅ June 12 23:14 UTC |
+| Routine re-triggered manually (will also run at next 6h cron) | ✅ June 12 ~23:10 UTC |
+| Shiva Task Tracker spreadsheet updated: rows 11/12 → "Fix needed", 7 fix rows (F1–F7) appended | ✅ June 13 via rclone |
+| `SHIVA_INSTRUCTIONS.html` updated with fix section + uploaded to source Drive folder | ✅ June 13 |
+| New `⚠️ SHIVA — 6 FIXES NEEDED` sheet created in source folder | ✅ June 13 |
+| FOR_SHIVA.md updated with FIXES NEEDED section | ✅ Committed 0a9509a |
 
-If the run failed or stalled, re-trigger: `RemoteTrigger action=run trigger_id=trig_01YD9atrhb6SStwi1BCqjUjV` (routine prompt is already correct; cron continues every 6h regardless).
+### ⏳ VERIFY FIRST IN NEXT SESSION
 
-**Still open (ASK SHIVA):**
-- **NEW:** `New york _ Q4 2022 DOR.pdf` in source is **0 bytes** (corrupt upload) — re-upload (FLAG-SQ1)
-- **NEW:** Missouri Q3 2022 has only a DOL filing, no DOR — confirm whether a Q3 DOR exists (FLAG-SQ2)
-- **NEW:** 2023 Q3 state returns exist in TWO source folders (`Q3_2023` AND `Q3-2023-2`) — confirm which is authoritative / whether contents differ; also folder `Q1_ 2023/Missour` is a typo for Missouri
-- Upload real TX Franchise returns (the `Quarterly state tax returns/` folder only has 941 duplicates)
-- Missing 941s: 2022 Q1–Q2, 2023 Q4 (or confirm not filed); remove misplaced `Payroll_941_2024_Q4.pdf` from `2023/QuarterlyTaxes/`
-- Missing: 2024 Balance Sheet PDF; 2022 Financials (currently Google-Docs placeholders only)
-- Upload Bhargavi's BOA-5127 personal statements (no `Personal_BankStatements_Bhargavi` folder exists in source)
-- Verify source `FedReturn_2022`/`Taxreturns_2023` are the same docs as docket `Form1065` PDFs (FLAG-3)
-- Manual deletions (Drive MCP can't delete): A7 root statements after year-subfolder copies verified; redundant A3/B5 root copies; stale UNMAPPED copies after B9/A9 re-routing
+1. **State Quarterly 2023/2026** — check `State_Quarterly/2023/Q1`, `/Q2`, `/Q3` and `/2026/Q1` are populated after the ~00:03 UTC June 13 cron run. If empty, re-trigger: `RemoteTrigger action=run trigger_id=trig_01YD9atrhb6SStwi1BCqjUjV`
+2. **CP_INPDATAFLA copies** — confirm `A2_941_CP_*.pdf` files landed in `Federal_941/{year}/Q{n}/`
+3. **A7 root statements** — bot should have copied 50 monthly PDFs from A7 root into `A7/{YYYY}/` subfolders; verify, then relay root-copy deletion list to Vivek
+4. **A9/B9 folders** — if the ~23:10 manual run (old prompt) created `A9_HWB0639_Bank_Statements` or `B9_Identity_Immigration_Docs` in docket, add to manual deletion list
+5. **Sync log** — look for `SYNC_LOG_2026-06-13T*.md` in `99_Admin/` for the overnight run results
+
+### ⏳ STILL OPEN — ASK SHIVA (sent to Shiva via tracker + HTML June 13)
+
+These are now in Shiva's tracker as rows F1–F7:
+- F1: Re-upload NY Q4 2022 DOR (0 bytes) — by Jun 14
+- F2: Upload MO Q3 2022 DOR (only DOL present) — by Jun 14
+- F3: Delete duplicate `Q3-2023-2` folder — by Jun 14
+- F4: Move misplaced `Payroll_941_2024_Q4.pdf` from 2023 to 2024 folder — by Jun 14
+- F5: Upload actual TX Franchise Tax Annual Reports 2022–2025 (NOT 941 copies) — by Jun 16
+- F6: Upload 2022 Q1 + Q2 state quarterly returns — by Jun 18
+- F7: Rename `Missour` typo folder to `Missouri` — by Jun 18
+
+**Other open items (not yet in Shiva's tracker):**
+- Missing: 2024 Balance Sheet PDF; 2022 Financials (Google-Docs placeholders only in source)
+- Upload Bhargavi's BOA-5127 personal statements (`Personal_BankStatements_Bhargavi` folder doesn't exist in source)
+- Missing 941s: 2022 Q1–Q2 federal (no source files)
+- Verify source `FedReturn_2022`/`Taxreturns_2023` = same docs as docket Form1065 PDFs (FLAG-3)
+- **Manual deletions** (rclone or Vivek in Drive — bot can never delete): A7 root statements once year-subfolder copies verified; redundant A3/B5 root copies; stale UNMAPPED originals; A9/B9 folders if they exist
 
 ---
 
