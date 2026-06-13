@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shiva — Document Upload Guide</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f5f5f5; color: #222; font-size: 13px; }
+  h1 { background: #1a1a2e; color: white; padding: 16px 20px; border-radius: 8px; margin-bottom: 5px; font-size: 20px; }
+  .deadline-banner { background: #d32f2f; color: white; padding: 10px 20px; border-radius: 8px; font-size: 15px; font-weight: bold; margin-bottom: 15px; }
+  .upload-banner { background: #1565c0; color: white; padding: 10px 20px; border-radius: 8px; font-size: 13px; margin-bottom: 20px; }
+  .upload-banner a { color: #90caf9; }
+  .section { background: white; border-radius: 8px; padding: 18px; margin-bottom: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+  .section-urgent { border-left: 5px solid #d32f2f; }
+  .section-soon { border-left: 5px solid #f57c00; }
+  .section-later { border-left: 5px solid #388e3c; }
+  h2 { margin-top: 0; font-size: 15px; }
+  h2.urgent { color: #d32f2f; }
+  h2.soon { color: #f57c00; }
+  h2.later { color: #388e3c; }
+  .task { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 13px; margin-bottom: 12px; }
+  .task-title { font-size: 15px; font-weight: bold; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+  .steps { margin: 6px 0; padding-left: 18px; }
+  .steps li { margin-bottom: 6px; line-height: 1.5; font-size: 13px; }
+  .tip { background: #fff8e1; border: 1px solid #ffe082; border-radius: 6px; padding: 8px 12px; margin-top: 8px; font-size: 12px; }
+  .tip::before { content: "TIP: "; font-weight: bold; }
+  .flag { background: #fce4ec; border: 1px solid #f48fb1; border-radius: 6px; padding: 8px 12px; margin-top: 8px; font-size: 12px; }
+  .flag::before { content: "IMPORTANT: "; font-weight: bold; color: #c62828; }
+  a { color: #1565c0; }
+  .tag-urgent { background: #d32f2f; color: white; font-size: 11px; padding: 2px 7px; border-radius: 10px; font-weight: normal; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px; }
+  th { background: #1a1a2e; color: white; padding: 8px 10px; text-align: left; }
+  td { padding: 7px 10px; border-bottom: 1px solid #e8e8e8; vertical-align: top; }
+  tr:hover { background: #f5f5f5; }
+  .fp { font-family: monospace; background: #e8e8e8; padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+  .good-bad { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 10px 0; }
+  .good { background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: 4px; padding: 10px; }
+  .bad { background: #fce4ec; border: 1px solid #f48fb1; border-radius: 4px; padding: 10px; }
+  .good h4 { color: #2e7d32; margin: 0 0 6px 0; font-size: 12px; }
+  .bad h4 { color: #c62828; margin: 0 0 6px 0; font-size: 12px; }
+  ul.names { margin: 4px 0; padding-left: 14px; }
+  ul.names li { font-family: monospace; font-size: 11px; margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<h1>Document Upload Guide — Shiva</h1>
+<div class="deadline-banner">WORK THIS WEEKEND — ALL DOCUMENTS DUE JUNE 16, 2026</div>
+<div class="upload-banner">
+  Upload everything to this folder — keep it open:<br>
+  <a href="https://drive.google.com/drive/folders/1EeSJDPWyiQFLSL4F4olbyenDofmeHRcd" target="_blank">https://drive.google.com/drive/folders/1EeSJDPWyiQFLSL4F4olbyenDofmeHRcd</a><br>
+  Upload here only. Do not upload to any other folder.<br><br>
+  Track your progress: <a href="https://docs.google.com/spreadsheets/d/1WA9FsMB1KsmKbO49pe7GcCVRLsGAiEgobzkxMhB3S74/edit" target="_blank">Open Shiva Task Tracker</a>
+  &nbsp;|&nbsp;
+  <a href="https://docs.google.com/spreadsheets/d/11cfJDQlai0WB8a8xuWLqi3TVGJ4hbPVlDlrIpxu5kc0/edit" target="_blank" style="color:#ffcc80;font-weight:bold;">⚠️ June 13 Fix List (open this too)</a>
+</div>
+
+<!-- FIXES NEEDED -->
+<div class="section section-urgent" style="border-left: 6px solid #d32f2f; background: #fff3f3;">
+  <h2 class="urgent">⚠️ FIXES NEEDED — Do These First (found June 13, 2026)</h2>
+  <p style="font-size:13px; color:#555;">The automated system found these problems while processing your uploads. Please fix by June 14.</p>
+  <table>
+    <tr><th>#</th><th>What to fix</th><th>Folder</th><th>By When</th></tr>
+    <tr><td><strong>F1</strong></td><td><strong>Re-upload New York Q4 2022 DOR</strong> — the file you uploaded is <span style="color:#d32f2f;font-weight:bold;">0 bytes (empty/corrupt)</span></td><td class="fp">2022/QuarterlyTaxes/Q4 2022/New York/</td><td><strong>Jun 14</strong></td></tr>
+    <tr><td><strong>F2</strong></td><td><strong>Upload Missouri Q3 2022 DOR</strong> — you uploaded the DOL but the DOR (Dept of Revenue withholding return) is missing</td><td class="fp">2022/QuarterlyTaxes/Q3 2022/MISSOURI/</td><td><strong>Jun 14</strong></td></tr>
+    <tr><td><strong>F3</strong></td><td><strong>Delete duplicate Q3 2023 folder</strong> — you created both <span class="fp">Q3_2023</span> and <span class="fp">Q3-2023-2</span>. Move any unique files from Q3-2023-2 into Q3_2023, then delete Q3-2023-2</td><td class="fp">2023/QuarterlyTaxes/</td><td><strong>Jun 14</strong></td></tr>
+    <tr><td><strong>F4</strong></td><td><strong>Move misplaced 941</strong> — <span class="fp">Payroll_941_2024_Q4.pdf</span> is in the 2023 folder by mistake. Move it to 2024/QuarterlyTaxes/</td><td class="fp">2023/QuarterlyTaxes/ → 2024/QuarterlyTaxes/</td><td><strong>Jun 14</strong></td></tr>
+    <tr><td><strong>F5</strong></td><td><strong>TX Franchise Tax Annual Returns still missing</strong> — the <span class="fp">Quarterly state tax returns/</span> folder only has 941 payroll copies, NOT Texas Franchise Tax returns. Upload the actual TX Franchise Annual Report PDFs for 2022, 2023, 2024, 2025</td><td class="fp">Quarterly state tax returns/</td><td><strong>Jun 16</strong></td></tr>
+    <tr><td><strong>F6</strong></td><td><strong>2022 Q1 and Q2 state quarterly returns missing</strong> — no files exist at all for Q1 and Q2 2022. Create the quarter subfolders and upload all state DOR + DOL returns (same structure as Q3/Q4 2022)</td><td class="fp">2022/QuarterlyTaxes/Q1 2022/{State}/ and Q2 2022/{State}/</td><td><strong>Jun 18</strong></td></tr>
+    <tr><td><strong>F7</strong></td><td><strong>Rename typo folder</strong> — folder is named <span class="fp">Missour</span> (missing the last "i"). Rename it to <span class="fp">Missouri</span></td><td class="fp">2023/QuarterlyTaxes/Q1_ 2023/</td><td><strong>Jun 18</strong></td></tr>
+  </table>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section">
+  <h2>How It Works</h2>
+  <ol class="steps">
+    <li>You upload documents to the folder link above</li>
+    <li>An automated system runs every 2 hours and organizes your uploads automatically</li>
+    <li>You never need to touch any other folder — just upload to the link above</li>
+    <li>Message Vivek if you are unsure about anything</li>
+  </ol>
+  <div style="margin-top:14px;">
+    <strong>Naming rule — rename every file before uploading:</strong><br>
+    Include Company + Document type + Year in the name.
+    <div class="good-bad" style="margin-top:8px;">
+      <div class="good">
+        <h4>Good names</h4>
+        <ul class="names">
+          <li>DATAFLAKE_FedReturn_2024.pdf</li>
+          <li>BOA9229_Statement_Mar2022.pdf</li>
+          <li>DATAFLAKE_BalanceSheet_2023.pdf</li>
+          <li>Payroll_941_2022_Q1.pdf</li>
+          <li>CPA_Attestation_Letter.pdf</li>
+        </ul>
+      </div>
+      <div class="bad">
+        <h4>Do not use</h4>
+        <ul class="names">
+          <li>scan001.pdf</li>
+          <li>document.pdf</li>
+          <li>tax.pdf</li>
+          <li>IMG_20260611.pdf</li>
+          <li>financials.pdf</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: TAX RETURNS -->
+<div class="section section-urgent">
+  <h2 class="urgent">TAX RETURNS — Most Urgent <span class="tag-urgent">START HERE</span></h2>
+
+  <div class="task">
+    <div class="task-title">
+      TASK 1 — Federal Tax Returns (Form 1065) — 4 documents
+    </div>
+    <ol class="steps">
+      <li>Contact your CPA or bookkeeper and ask them to send you DATAFLAKE's federal tax returns for 2022, 2023, 2024, and 2025</li>
+      <li>When you receive each file, rename it and upload to the correct folder:</li>
+    </ol>
+    <table>
+      <tr><th>Document</th><th>Upload to this folder</th></tr>
+      <tr><td>DATAFLAKE Federal Tax Return (Form 1065) — 2022</td><td><span class="fp">2022/YearlyTax/</span></td></tr>
+      <tr><td>DATAFLAKE Federal Tax Return (Form 1065) — 2023</td><td><span class="fp">2023/YearlyTax/</span></td></tr>
+      <tr><td>DATAFLAKE Federal Tax Return (Form 1065) — 2024</td><td><span class="fp">2024/YearlyTax/</span></td></tr>
+      <tr><td>DATAFLAKE Federal Tax Return (Form 1065) — 2025</td><td><span class="fp">2025/YearlyTax/</span></td></tr>
+    </table>
+    <div class="tip">Create the YearlyTax folder inside each year folder if it doesn't exist yet.</div>
+  </div>
+
+  <div class="task">
+    <div class="task-title">
+      TASK 2 — Annual State Returns — 4 documents
+    </div>
+    <ol class="steps">
+      <li>Ask your CPA for annual state tax returns for DATAFLAKE for 2022, 2023, 2024, and 2025</li>
+      <li>This includes Texas franchise tax and any other states where DATAFLAKE has operations or payroll</li>
+      <li>Upload all to the folder below:</li>
+    </ol>
+    <table>
+      <tr><th>Document</th><th>Upload to this folder</th></tr>
+      <tr><td>Annual State Returns — 2022 (Texas + all other states)</td><td><span class="fp">Quarterly state tax returns/</span></td></tr>
+      <tr><td>Annual State Returns — 2023 (all states)</td><td><span class="fp">Quarterly state tax returns/</span></td></tr>
+      <tr><td>Annual State Returns — 2024 (all states)</td><td><span class="fp">Quarterly state tax returns/</span></td></tr>
+      <tr><td>Annual State Returns — 2025 (all states)</td><td><span class="fp">Quarterly state tax returns/</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 2: QUARTERLY + FINANCIALS -->
+<div class="section section-soon">
+  <h2 class="soon">FINANCIAL DOCUMENTS — This Weekend</h2>
+
+  <div class="task">
+    <div class="task-title">
+      TASK 3 — Quarterly State Payroll Returns 941,DOL,DOR — 17 documents
+    </div>
+    <ol class="steps">
+      <li>Ask your CPA or payroll processor for quarterly payroll tax returns filed with each state for every quarter from 2022 through Q1 2026</li>
+      <li>These are the quarterly 941 (federal payroll), DOL (Department of Labor), and DOR (Department of Revenue/state payroll) filings for every state where DATAFLAKE has employees — not just Texas</li>
+      <li>Upload each quarter to the correct year/QuarterlyTaxes/ folder. Name each file: <strong>Payroll_941_2022_Q1.pdf</strong></li>
+    </ol>
+    <table>
+      <tr><th>Document</th><th>Upload to</th></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2022 Q1 for all states</td><td><span class="fp">2022/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2022 Q2 for all states</td><td><span class="fp">2022/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2022 Q3 for all states</td><td><span class="fp">2022/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2022 Q4 for all states</td><td><span class="fp">2022/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2023 Q1 for all states</td><td><span class="fp">2023/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2023 Q2 for all states</td><td><span class="fp">2023/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2023 Q3 for all states</td><td><span class="fp">2023/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2023 Q4 for all states</td><td><span class="fp">2023/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2024 Q1 for all states</td><td><span class="fp">2024/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2024 Q2 for all states</td><td><span class="fp">2024/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2024 Q3 for all states</td><td><span class="fp">2024/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2024 Q4 for all states</td><td><span class="fp">2024/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2025 Q1 for all states</td><td><span class="fp">2025/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2025 Q2 for all states</td><td><span class="fp">2025/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2025 Q3 for all states</td><td><span class="fp">2025/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2025 Q4 for all states</td><td><span class="fp">2025/QuarterlyTaxes/</span></td></tr>
+      <tr><td>State Quarterly Payroll Returns 941,DOL,DOR — 2026 Q1 for all states</td><td><span class="fp">2026/QuarterlyTaxes/</span></td></tr>
+    </table>
+  </div>
+
+  <div class="task">
+    <div class="task-title">
+      TASK 4 — Financial Statements (Balance Sheet, P&amp;L, Cash Flow) — 15 documents
+    </div>
+    <div class="flag">All financial statements must be CPA-reviewed or CPA-attested. Management-prepared alone is not acceptable.</div>
+    <ol class="steps">
+      <li>Ask your CPA for Balance Sheet, Profit &amp; Loss Statement, and Cash Flow Statement for: Dec 31 of 2022, 2023, 2024, 2025, and YTD May 31, 2026</li>
+      <li>All must be CPA-attested (signed/stamped by the CPA)</li>
+      <li>Upload to the correct year/Financials/ folder. Create the Financials subfolder inside each year folder first.</li>
+    </ol>
+    <table>
+      <tr><th>Document</th><th>Upload to</th></tr>
+      <tr><td>Balance Sheet — Dec 31, 2022</td><td><span class="fp">2022/Financials/</span></td></tr>
+      <tr><td>Balance Sheet — Dec 31, 2023</td><td><span class="fp">2023/Financials/</span></td></tr>
+      <tr><td>Balance Sheet — Dec 31, 2024</td><td><span class="fp">2024/Financials/</span></td></tr>
+      <tr><td>Balance Sheet — Dec 31, 2025</td><td><span class="fp">2025/Financials/</span></td></tr>
+      <tr><td>Balance Sheet — YTD May 31, 2026</td><td><span class="fp">2026/Financials/</span></td></tr>
+      <tr><td>Profit &amp; Loss Statement — 2022</td><td><span class="fp">2022/Financials/</span></td></tr>
+      <tr><td>Profit &amp; Loss Statement — 2023</td><td><span class="fp">2023/Financials/</span></td></tr>
+      <tr><td>Profit &amp; Loss Statement — 2024</td><td><span class="fp">2024/Financials/</span></td></tr>
+      <tr><td>Profit &amp; Loss Statement — 2025</td><td><span class="fp">2025/Financials/</span></td></tr>
+      <tr><td>Profit &amp; Loss — YTD May 2026</td><td><span class="fp">2026/Financials/</span></td></tr>
+      <tr><td>Cash Flow Statement — 2022</td><td><span class="fp">2022/Financials/</span></td></tr>
+      <tr><td>Cash Flow Statement — 2023</td><td><span class="fp">2023/Financials/</span></td></tr>
+      <tr><td>Cash Flow Statement — 2024</td><td><span class="fp">2024/Financials/</span></td></tr>
+      <tr><td>Cash Flow Statement — 2025</td><td><span class="fp">2025/Financials/</span></td></tr>
+      <tr><td>Cash Flow — YTD May 2026</td><td><span class="fp">2026/Financials/</span></td></tr>
+    </table>
+  </div>
+
+  <div class="task">
+    <div class="task-title">
+      TASK 5 — CPA Attestation Letter + Bhargavi W-2/1099 — 4 documents
+    </div>
+    <div class="flag">The CPA Attestation Letter is critical — it is one of the most important documents in this entire collection.</div>
+    <ol class="steps">
+      <li>Ask your CPA to write a signed attestation letter covering all the financial statements from 2022 through May 2026</li>
+      <li>Ask your payroll system or bookkeeper for Bhargavi's W-2 or 1099 from DATAFLAKE for 2023, 2024, and 2025</li>
+    </ol>
+    <table>
+      <tr><th>Document</th><th>Upload to</th></tr>
+      <tr><td><strong>CPA Attestation Letter</strong> — signed, covering all 2022–2026 financial statements</td><td><span class="fp">CPA_Attestation/</span></td></tr>
+      <tr><td>Bhargavi W-2 or 1099 from DATAFLAKE — 2023</td><td><span class="fp">Employment_DATAFLAKE/</span></td></tr>
+      <tr><td>Bhargavi W-2 or 1099 from DATAFLAKE — 2024</td><td><span class="fp">Employment_DATAFLAKE/</span></td></tr>
+      <tr><td>Bhargavi W-2 or 1099 from DATAFLAKE — 2025</td><td><span class="fp">Employment_DATAFLAKE/</span></td></tr>
+    </table>
+    <div class="tip">Create the CPA_Attestation and Employment_DATAFLAKE folders at the top level (not inside a year folder).</div>
+  </div>
+</div>
+
+<!-- SECTION 3: BANK STATEMENTS -->
+<div class="section section-later">
+  <h2 class="later">BANK STATEMENTS — 53 Monthly Files</h2>
+
+  <div class="task">
+    <div class="task-title">
+      TASK 6 — DATAFLAKE BOA Account -9229 Monthly Statements (April 2022 – May 2026)
+    </div>
+    <ol class="steps">
+      <li>Log in to Bank of America online banking</li>
+      <li>Go to the DATAFLAKE account ending <strong>-9229</strong></li>
+      <li>Click <strong>Statements</strong> or <strong>Documents</strong></li>
+      <li>Download each month as a <strong>separate PDF</strong> — do not combine months</li>
+      <li>Name each file: <strong>BOA9229_January_2022.pdf</strong>, <strong>BOA9229_February_2022.pdf</strong> etc.</li>
+      <li>Upload to the correct year/BankStatements/ folder (create BankStatements subfolder inside each year if needed)</li>
+    </ol>
+    <table>
+      <tr><th>Period</th><th>Number of files</th><th>Upload to</th></tr>
+      <tr><td>April 2022 – December 2022 (9 months)</td><td>9 PDFs</td><td><span class="fp">2022/BankStatements/</span></td></tr>
+      <tr><td>January 2023 – December 2023 (12 months)</td><td>12 PDFs</td><td><span class="fp">2023/BankStatements/</span></td></tr>
+      <tr><td>January 2024 – December 2024 (12 months)</td><td>12 PDFs</td><td><span class="fp">2024/BankStatements/</span></td></tr>
+      <tr><td>January 2025 – December 2025 (12 months)</td><td>12 PDFs</td><td><span class="fp">2025/BankStatements/</span></td></tr>
+      <tr><td>January 2026 – May 2026 (5 months)</td><td>5 PDFs</td><td><span class="fp">2026/BankStatements/</span></td></tr>
+    </table>
+    <div class="tip">Bank of America usually lets you download up to 18 months at once. Log in on a desktop computer for easier downloading.</div>
+  </div>
+</div>
+
+<!-- SECTION 4: CAPITAL ACCOUNT DOCS -->
+<div class="section section-later">
+  <h2 class="later">CAPITAL ACCOUNT DOCUMENTS</h2>
+
+  <div class="task">
+    <div class="task-title">
+      TASK 7 — Capital Account Ledgers + Member Resolution — 5 documents
+    </div>
+    <ol class="steps">
+      <li>Ask your CPA or bookkeeper for the per-member capital account ledgers as of December 31 for each year (2022, 2023, 2024, 2025)</li>
+      <li>Also find: the Member Resolution that approved the 2023 profits being reinvested as a capital contribution (not distributed to members as cash)</li>
+      <li>Create a folder called <strong>Capital_Account</strong> at the top level of the source folder, then upload all 5 documents there</li>
+    </ol>
+    <table>
+      <tr><th>Document</th><th>Upload to</th></tr>
+      <tr><td>Per-member Capital Account Ledger — December 31, 2022</td><td><span class="fp">Capital_Account/</span></td></tr>
+      <tr><td>Per-member Capital Account Ledger — December 31, 2023</td><td><span class="fp">Capital_Account/</span></td></tr>
+      <tr><td>Per-member Capital Account Ledger — December 31, 2024</td><td><span class="fp">Capital_Account/</span></td></tr>
+      <tr><td>Per-member Capital Account Ledger — December 31, 2025</td><td><span class="fp">Capital_Account/</span></td></tr>
+      <tr><td>Member Resolution — approving 2023 profit reinvestment</td><td><span class="fp">Capital_Account/</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <p style="font-size:12px;color:#888;margin:0;">Total: 102 documents. Message Vivek if a document is unavailable or if you are unsure where to upload something.</p>
+</div>
+
+</body>
+</html>
