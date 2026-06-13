@@ -101,12 +101,26 @@ All UNMAPPED files and old A2 folder contents have been manually resolved. **Do 
 | Plan updated with completed deletions + A1a size discrepancy flag | ✅ Committed 6d4fa53 |
 | Docket sync re-triggered — will now copy A5 vendor contracts with fixed naming | ✅ June 13 ~13:30 UTC |
 
+### ✅ VERIFIED — June 13 Session C (new session)
+
+1. **A5 vendor contracts** — sync ran (created ~10:54–10:55 UTC, likely a cron run or Session B trigger). **9 files confirmed in docket:**
+   - A5/2022: 8 files — Akkodis, Chamberlain_Signed, InsightGlobal, PencomSystems, PencomSystems_Signed, RevolutionStaffing, AGMTechSolutions, TekSystems
+   - A5/2023: 1 file — TekSystems_V2
+   - A5/2024 and A5/2025: **0 files** — either no source contracts exist for those years, or Shiva hasn't uploaded them. Not a blocker (2022 MSAs cover ongoing engagements).
+   - No SYNC_LOG found for this run (bot may have run without generating one, or log is named differently).
+
+2. **A1a size discrepancy** — ⚠ STILL OPEN. Vivek must open both files in Drive and delete the wrong one. The 627KB copy matches the old `A1_DATAFLAKE_Form1065_2022.pdf` and is likely the complete Form 1065. The 217KB copy is unknown origin.
+
+3. **F1–F4 deadline Jun 14** — not actioned yet (it's still Jun 13). No new NY Q4 DOR upload detected in source. Shiva task tracker still shows rows 11/12 as "Fix needed". **Do NOT re-trigger sync yet** — wait for Shiva to action F1–F4 first.
+
+4. **⚠ ANOMALY — Shiva task tracker rows 17–24 show "Done"** for 2024 Q1–Q4 and 2025 Q1–Q4 state quarterly (last modified 10:57 UTC). But T0630 scan (06:30 UTC) found NO quarter-state subfolders in 2024/2025 source. Either: (a) Shiva uploaded 2024/2025 data between 06:30 and 10:57 UTC and it's waiting to be picked up, OR (b) "Done" was marked prematurely. **Re-trigger sync after F1–F4 are fixed (by Jun 14 EOD) to pick up any new 2024/2025 data Shiva may have uploaded.**
+
 ### ⏳ VERIFY FIRST IN NEXT SESSION
 
-1. **A5 vendor contracts** — check `A5_Vendor_Contracts_MSA/{2022,2023,2024,2025}/` are populated from the sync triggered ~13:30 UTC. Each folder should have files named `A5_{YEAR}_{ClientFolderName}_MSA.pdf` (or similar). Check the new `SYNC_LOG_2026-06-13T*.md` in `99_Admin/` for count and any errors.
-2. **A1a size discrepancy** — two `A1a_DF_Federal_Return_2022.pdf` files remain (627KB vs 217KB). Vivek must open both in Drive and delete the wrong one. Until resolved, A1a status is ⚠.
-3. **Shiva F1–F4 deadline was Jun 14** — check if NY Q4 DOR, MO Q3 DOR, Q3-2023-2 cleanup, and misplaced 941 have been actioned. Re-trigger sync if yes.
-4. **F12 answer from Shiva** — is `A1_DATAFLAKE_Form1065_2023_StateAmendment.pdf` a standalone exhibit or included in A1b? Assign exhibit number or close.
+1. **F1–F4 actioned by Shiva** — check Jun 14. If fixed, re-trigger sync and verify in `99_Admin/SYNC_LOG_*.md`.
+2. **2024/2025 state quarterly anomaly** — after re-trigger, check if 2024/2025 A2 State_Quarterly folders are now populated (would resolve the tracker "Done" mystery).
+3. **A1a** — Vivek must delete the wrong A1a file. Then mark ✅ in DOCKET_FILE_IDS.md.
+4. **F12** — Vivek/Shiva: is `A1b_DF_Federal_Return_2023_Amendment.pdf` a standalone exhibit (A1b-amendment) or just supporting A1b? Assign exhibit label or close.
 
 ### ✅ VERIFIED — June 13, 2026 ~13:00 UTC
 

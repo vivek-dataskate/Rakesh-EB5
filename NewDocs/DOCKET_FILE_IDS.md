@@ -65,7 +65,7 @@ These are the documents already created. Open in Google Drive → right-click �
 | A-07 | A2c | TX Franchise Tax Annual Report 2024 | ⏳ awaiting Shiva |
 | A-08 | A2d | TX Franchise Tax Annual Report 2025 | ⏳ awaiting Shiva |
 | A-09 | A2e–A2u | Federal 941s (2022 Q1–2026 Q1, 17 quarters) | ✅ synced |
-| A-10 | A2e–A2u | State Quarterly DOR/DOL returns (all states, all quarters) | ✅ 2022 Q3–Q4 done; 2023 pending verify |
+| A-10 | A2e–A2u | State Quarterly DOR/DOL returns (all states, all quarters) | ✅ 2022 (18 files) + 2023 (87 files) + 2026 (9 files) verified by hash Jun 13; 2024–2025 not yet in docket |
 | A-11 | A2v–A2y | State Annual Returns 2022–2025 | ✅ 2022 synced; 2023–2025 awaiting Shiva |
 | A-12 | A3a | Balance Sheet — Dec 31, 2022 | ⏳ awaiting Shiva |
 | A-13 | A3b | Balance Sheet — Dec 31, 2023 | ✅ synced |
@@ -74,7 +74,7 @@ These are the documents already created. Open in Google Drive → right-click �
 | A-16 | A3e | Balance Sheet — YTD May 31, 2026 | ⏳ awaiting Shiva |
 | A-17 | A3f | P&L Statement 2022 | ⏳ awaiting Shiva |
 | A-18 | A3g | P&L Statement 2023 | ✅ synced |
-| A-19 | A3h | P&L Statement 2024 | ⏳ awaiting Shiva |
+| A-19 | A3h | P&L Statement 2024 | ✅ synced (verified by hash Jun 13) |
 | A-20 | A3i | P&L Statement 2025 | ✅ synced |
 | A-21 | A3j | P&L Statement — YTD May 2026 | ⏳ awaiting Shiva |
 | A-22 | A3k | Cash Flow Statement 2022 | ⏳ awaiting Shiva |
@@ -84,7 +84,7 @@ These are the documents already created. Open in Google Drive → right-click �
 | A-26 | A3o | Cash Flow Statement — YTD May 2026 | ⏳ awaiting Shiva |
 | A-27 | A3p | CPA Attestation Letter (⚠ must be signed) | ⏳ due Jun 18 |
 | A-28 | A4 | Vendor Summary + Entity Verification (xlsx) | ⏳ Vivek: add DUNS |
-| A-29 | A5 | Vendor Contracts / MSA (top 8 clients) | ⏳ Vivek: upload contracts |
+| A-29 | A5 | Vendor Contracts / MSA (top 8 clients) | ✅ 9 files synced Jun 13: A5/2022 (8 clients — Akkodis, Chamberlain, InsightGlobal, PencomSystems×2, RevolutionStaffing, AGMTechSolutions, TekSystems) + A5/2023 (TekSystems V2); 2024/2025 empty |
 | A-30 | A6 | Invoice-to-Bank Tie-Out (xlsx) | ✅ synced |
 | A-31 | A7a–A7l | BOA-9229 Bank Statements 2022 (Jan–Dec) | ✅ synced |
 | A-32 | A7m–A7x | BOA-9229 Bank Statements 2023 (Jan–Dec) | ✅ synced |
