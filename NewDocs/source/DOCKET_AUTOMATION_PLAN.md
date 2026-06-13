@@ -1,7 +1,7 @@
 # EB-5 Docket Automation Plan
 **Petitioner:** Bhargavi Jaggarapu | Receipt: IOE0934124117 | A-Number: A138-176-449
 **Response Deadline: July 6, 2026**
-**Last updated:** June 13, 2026 ~13:00 UTC (verification complete — A5 naming fixed)
+**Last updated:** June 13, 2026 ~13:30 UTC (all D1-D8 deletions complete via rclone)
 
 **Docket root:** https://drive.google.com/drive/u/1/folders/0ALgmUtYnXvW3Uk9PVA
 **Sync routine:** trig_01YD9atrhb6SStwi1BCqjUjV (every 6 hours — auto-copies source → docket)
@@ -106,16 +106,25 @@ Logs SYNC_LOG_2026-06-13T0206.md and SYNC_LOG_2026-06-13T0630.md reviewed. All i
 - **State Quarterly 2024/2025** — no quarter-state subfolders exist in source → new Shiva items F8
 - **Federal returns 2024/2025 (A1c/A1d)** — `2024/Yearly Tax/` and `2025/Yearly Tax/` are empty → new Shiva items F10/F11
 
-### ⏳ MANUAL DELETIONS — Vivek must delete in Drive UI (bot cannot delete)
+### ✅ MANUAL DELETIONS — COMPLETE (June 13, 2026 via rclone)
 
-| Code | Delete This | Location in Docket | Why |
-|------|-------------|-------------------|-----|
-| FLAG-D1 | Entire `A9_HWB0639_Bank_Statements/` folder | `01_Issue1_DATAFLAKE/` | Superseded — HW statements in A7/2026; folder is stale |
-| FLAG-D2 | Entire `B9_Identity_Immigration_Docs/` folder | `02_Issue2_Personal_Employment/` | Superseded — docs moved to B6 June 12; has 20+ B9-prefixed files |
-| FLAG-D3 | 50 root-level `A7_BOA9229_YYYY-MM.pdf` files | `A7_BOA9229_Bank_Statements/` root | Year-subfolder copies confirmed; root copies are duplicates |
-| FLAG-D4 | `A2v_State_Annual_2022.pdf` (old copy, Jun 12 12:14) | `A2/State_Annual/2022/` | Correct copy is `A2v_State_Annual_2022_Annual State Returns — 2022.pdf` |
-| FLAG-D5 | `A1_DATAFLAKE_Form1065_2022.pdf` | `A1_Federal_Tax_Returns/` | Old-format; content now in `A1a_DF_Federal_Return_2022.pdf` |
-| FLAG-D6 | `A1_DATAFLAKE_Form1065_2023.pdf` | `A1_Federal_Tax_Returns/` | Old-format; content now in `A1b_DF_Federal_Return_2023_*.pdf` — verify same content first |
+All 8 items deleted and verified:
+
+| Code | Deleted | Result |
+|------|---------|--------|
+| D1 | `A9_HWB0639_Bank_Statements/` (6 files) | ✅ Purged |
+| D2 | `B9_Identity_Immigration_Docs/` (20+ files) | ✅ Purged |
+| D3 | 50 root-level `A7_BOA9229_YYYY-MM.pdf` at A7 root | ✅ Deleted; year subfolders intact |
+| D4 | `A2v_State_Annual_2022.pdf` (old Jun 12 12:14 copy) | ✅ Deleted; correct copy remains |
+| D5 | `A1_DATAFLAKE_Form1065_2022.pdf` (old format) | ✅ Deleted |
+| D6 | `A1_DATAFLAKE_Form1065_2023.pdf` (old format) | ✅ Deleted |
+| D7 | `A1b_DF_Federal_Return_2023.pdf` (redundant duplicate) | ✅ Deleted; canonical `_DATAFLAKE_Taxreturns_2023` copy kept |
+| D8 | `A1_DATAFLAKE_Form1065_2023_StateAmendment.pdf` (old format) | ✅ Deleted; `A1b_DF_Federal_Return_2023_Amendment.pdf` kept |
+
+**⚠ OPEN — A1a size discrepancy (Vivek must check):**
+Two files named `A1a_DF_Federal_Return_2022.pdf` remain in A1 folder with different sizes: 627KB and 217KB.
+The 627KB copy matches the old `A1_DATAFLAKE_Form1065_2022.pdf` (deleted). The 217KB copy is unknown origin.
+Open in Drive, verify which is the complete 2022 Form 1065, then delete the wrong one.
 
 ### ⏳ STILL OPEN — ASK SHIVA
 
