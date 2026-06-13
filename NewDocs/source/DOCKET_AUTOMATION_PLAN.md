@@ -1,7 +1,7 @@
 # EB-5 Docket Automation Plan
 **Petitioner:** Bhargavi Jaggarapu | Receipt: IOE0934124117 | A-Number: A138-176-449
 **Response Deadline: July 6, 2026**
-**Last updated:** June 13, 2026 ~11:00 UTC (session closed — full status below)
+**Last updated:** June 13, 2026 ~13:00 UTC (verification complete — A5 naming fixed)
 
 **Docket root:** https://drive.google.com/drive/u/1/folders/0ALgmUtYnXvW3Uk9PVA
 **Sync routine:** trig_01YD9atrhb6SStwi1BCqjUjV (every 6 hours — auto-copies source → docket)
@@ -89,31 +89,58 @@ All UNMAPPED files and old A2 folder contents have been manually resolved. **Do 
 | New `⚠️ SHIVA — 6 FIXES NEEDED` sheet created in source folder | ✅ June 13 |
 | FOR_SHIVA.md updated with FIXES NEEDED section | ✅ Committed 0a9509a |
 
-### ⏳ VERIFY FIRST IN NEXT SESSION
+### ✅ VERIFIED — June 13, 2026 ~13:00 UTC
 
-1. **State Quarterly 2023/2026** — check `State_Quarterly/2023/Q1`, `/Q2`, `/Q3` and `/2026/Q1` are populated after the ~00:03 UTC June 13 cron run. If empty, re-trigger: `RemoteTrigger action=run trigger_id=trig_01YD9atrhb6SStwi1BCqjUjV`
-2. **CP_INPDATAFLA copies** — confirm `A2_941_CP_*.pdf` files landed in `Federal_941/{year}/Q{n}/`
-3. **A7 root statements** — bot should have copied 50 monthly PDFs from A7 root into `A7/{YYYY}/` subfolders; verify, then relay root-copy deletion list to Vivek
-4. **A9/B9 folders** — if the ~23:10 manual run (old prompt) created `A9_HWB0639_Bank_Statements` or `B9_Identity_Immigration_Docs` in docket, add to manual deletion list
-5. **Sync log** — look for `SYNC_LOG_2026-06-13T*.md` in `99_Admin/` for the overnight run results
+Logs SYNC_LOG_2026-06-13T0206.md and SYNC_LOG_2026-06-13T0630.md reviewed. All items resolved:
 
-### ⏳ STILL OPEN — ASK SHIVA (sent to Shiva via tracker + HTML June 13)
+1. ✅ **State Quarterly 2023/2026** — fully populated: 2023 Q1 (18 files), Q2 (24 files), Q3 (42 files); 2026 Q1 (9 files). No source data exists for 2024/2025 state quarterly — new Shiva items F8/F9 added
+2. ✅ **CP_INPDATAFLA copies** — all 9 CP files confirmed in `Federal_941/{year}/Q{n}/` (2024 Q1-Q4, 2025 Q1-Q4, 2026 Q1)
+3. ✅ **A7 root statements** — 50 statements copied to year subfolders (02:06 UTC run); root copies are duplicates → FLAG-D3 in Manual Deletion list below
+4. ✅ **A9/B9 folders confirmed** — `A9_HWB0639_Bank_Statements` (in 01_Issue1_DATAFLAKE) and `B9_Identity_Immigration_Docs` (in 02_Issue2_Personal_Employment, 20+ files) both exist → FLAG-D1/D2 below
+5. ✅ **Sync logs** — SYNC_LOG_2026-06-13T0206.md and SYNC_LOG_2026-06-13T0630.md in `99_Admin/`
 
-These are now in Shiva's tracker as rows F1–F7:
-- F1: Re-upload NY Q4 2022 DOR (0 bytes) — by Jun 14
-- F2: Upload MO Q3 2022 DOR (only DOL present) — by Jun 14
-- F3: Delete duplicate `Q3-2023-2` folder — by Jun 14
-- F4: Move misplaced `Payroll_941_2024_Q4.pdf` from 2023 to 2024 folder — by Jun 14
-- F5: Upload actual TX Franchise Tax Annual Reports 2022–2025 (NOT 941 copies) — by Jun 16
-- F6: Upload 2022 Q1 + Q2 state quarterly returns — by Jun 18
-- F7: Rename `Missour` typo folder to `Missouri` — by Jun 18
+**New findings from 06:30 log:**
+- **A5 design gap fixed** — old rule `A5_{YEAR}_{filename}` caused all vendor MSAs to collide (all named `MSA.pdf`). Fixed to `A5_{YEAR}_{ClientFolderName}_{filename}` in Part 3. Bot had correctly withheld all A5 copies. Re-trigger sync after this commit is pushed to copy vendor contracts.
+- **Duplicate/stale A1 files** — old-format `A1_DATAFLAKE_Form1065_2022.pdf` and `A1_DATAFLAKE_Form1065_2023.pdf` still in A1 folder alongside properly named copies → FLAG-D5/D6. Also: `A1_DATAFLAKE_Form1065_2023_StateAmendment.pdf` present — not exhibit-prefixed, needs review → FLAG-SQ12
+- **A2 State Annual 2023/2024/2025** — not found in source at all → new Shiva items F9
+- **State Quarterly 2024/2025** — no quarter-state subfolders exist in source → new Shiva items F8
+- **Federal returns 2024/2025 (A1c/A1d)** — `2024/Yearly Tax/` and `2025/Yearly Tax/` are empty → new Shiva items F10/F11
 
-**Other open items (not yet in Shiva's tracker):**
-- Missing: 2024 Balance Sheet PDF; 2022 Financials (Google-Docs placeholders only in source)
-- Upload Bhargavi's BOA-5127 personal statements (`Personal_BankStatements_Bhargavi` folder doesn't exist in source)
-- Missing 941s: 2022 Q1–Q2 federal (no source files)
-- Verify source `FedReturn_2022`/`Taxreturns_2023` = same docs as docket Form1065 PDFs (FLAG-3)
-- **Manual deletions** (rclone or Vivek in Drive — bot can never delete): A7 root statements once year-subfolder copies verified; redundant A3/B5 root copies; stale UNMAPPED originals; A9/B9 folders if they exist
+### ⏳ MANUAL DELETIONS — Vivek must delete in Drive UI (bot cannot delete)
+
+| Code | Delete This | Location in Docket | Why |
+|------|-------------|-------------------|-----|
+| FLAG-D1 | Entire `A9_HWB0639_Bank_Statements/` folder | `01_Issue1_DATAFLAKE/` | Superseded — HW statements in A7/2026; folder is stale |
+| FLAG-D2 | Entire `B9_Identity_Immigration_Docs/` folder | `02_Issue2_Personal_Employment/` | Superseded — docs moved to B6 June 12; has 20+ B9-prefixed files |
+| FLAG-D3 | 50 root-level `A7_BOA9229_YYYY-MM.pdf` files | `A7_BOA9229_Bank_Statements/` root | Year-subfolder copies confirmed; root copies are duplicates |
+| FLAG-D4 | `A2v_State_Annual_2022.pdf` (old copy, Jun 12 12:14) | `A2/State_Annual/2022/` | Correct copy is `A2v_State_Annual_2022_Annual State Returns — 2022.pdf` |
+| FLAG-D5 | `A1_DATAFLAKE_Form1065_2022.pdf` | `A1_Federal_Tax_Returns/` | Old-format; content now in `A1a_DF_Federal_Return_2022.pdf` |
+| FLAG-D6 | `A1_DATAFLAKE_Form1065_2023.pdf` | `A1_Federal_Tax_Returns/` | Old-format; content now in `A1b_DF_Federal_Return_2023_*.pdf` — verify same content first |
+
+### ⏳ STILL OPEN — ASK SHIVA
+
+F1–F7 sent to Shiva via tracker + HTML June 13. F8–F12 are new (June 13 verification session):
+
+| Code | Fix | Folder | By When |
+|------|-----|--------|---------|
+| F1 | Re-upload NY Q4 2022 DOR (0-byte file) | `2022/QuarterlyTaxes/Q4 2022/New York/` | Jun 14 |
+| F2 | Upload MO Q3 2022 DOR (DOL only, DOR missing) | `2022/QuarterlyTaxes/Q3 2022/MISSOURI/` | Jun 14 |
+| F3 | Delete duplicate `Q3-2023-2` folder (move files to `Q3_2023` first) | `2023/QuarterlyTaxes/` | Jun 14 |
+| F4 | Move misplaced `Payroll_941_2024_Q4.pdf` from 2023 root → 2024 folder | `2024/QuarterlyTaxes/` | Jun 14 |
+| F5 | Upload actual TX Franchise Tax Annual Reports 2022–2025 | `Quarterly state tax returns/` | Jun 16 |
+| F6 | Upload 2022 Q1 + Q2 state quarterly returns (all states) | `2022/QuarterlyTaxes/Q1 2022/{State}/` and `Q2 2022/` | Jun 18 |
+| F7 | Rename typo folder `Missour` → `Missouri` | `2023/QuarterlyTaxes/Q1_ 2023/` | Jun 18 |
+| F8 | Upload 2024 and 2025 state quarterly returns — no quarter-state subfolders exist in source for either year | `2024/QuarterlyTaxes/Q1 2024/{State}/` … `Q4 2025/{State}/` | Jun 20 |
+| F9 | Upload state annual returns for 2023, 2024, 2025 — only 2022 found in source | `2023/QuarterlyTaxes/` (filename `Annual State Returns — 2023.pdf`) | Jun 20 |
+| F10 | Upload DATAFLAKE 2024 federal tax return — `2024/Yearly Tax/` is empty | `2024/YearlyTax/` | Jun 16 |
+| F11 | Upload DATAFLAKE 2025 federal tax return — `2025/Yearly Tax/` is empty | `2025/YearlyTax/` | Jun 16 |
+| F12 | Clarify `A1_DATAFLAKE_Form1065_2023_StateAmendment.pdf` in A1 docket folder — is this a separate exhibit (A1b amendment) or should it be merged into A1b? | `A1_Federal_Tax_Returns/` | Jun 16 |
+
+**Other open items (Vivek):**
+- Missing: 2022 Financials (Google-Docs placeholders only in source); 2024 Balance Sheet PDF
+- Manual deletions — see FLAG-D1 through FLAG-D6 above (Vivek deletes in Drive UI)
+- Verify `A1_DATAFLAKE_Form1065_2022.pdf` and `A1_DATAFLAKE_Form1065_2023.pdf` contain same content as properly named copies before deleting (FLAG-D5/D6)
+- 2022 Q1–Q2 federal 941s still missing from source (FLAG-SQ5)
 
 ---
 
@@ -291,10 +318,10 @@ Shiva's source folder structure (sync bot must handle this exactly):
 
 | Source Folder | Source File Pattern | → Docket Folder | Renamed As |
 |---|---|---|---|
-| `2022/{ClientName}/` | `*.pdf` | `A5_Vendor_Contracts_MSA/2022/` | `A5_2022_{filename}` |
-| `2023/{ClientName}/` | `*.pdf` | `A5_Vendor_Contracts_MSA/2023/` | `A5_2023_{filename}` |
-| `2024/{ClientName}/` | `*.pdf` | `A5_Vendor_Contracts_MSA/2024/` | `A5_2024_{filename}` |
-| `2025/{ClientName}/` | `*.pdf` | `A5_Vendor_Contracts_MSA/2025/` | `A5_2025_{filename}` |
+| `2022/{ClientName}/` | `*.pdf` | `A5_Vendor_Contracts_MSA/2022/` | `A5_2022_{ClientFolderName}_{filename}` |
+| `2023/{ClientName}/` | `*.pdf` | `A5_Vendor_Contracts_MSA/2023/` | `A5_2023_{ClientFolderName}_{filename}` |
+| `2024/{ClientName}/` | `*.pdf` | `A5_Vendor_Contracts_MSA/2024/` | `A5_2024_{ClientFolderName}_{filename}` |
+| `2025/{ClientName}/` | `*.pdf` | `A5_Vendor_Contracts_MSA/2025/` | `A5_2025_{ClientFolderName}_{filename}` |
 
 #### A6 — Invoice to Bank Tie-Out (flat — 1 file)
 
