@@ -16,6 +16,11 @@
 | F5 | **TX Franchise Tax Annual Returns NOT uploaded** — the `Quarterly state tax returns/` folder only has 941 duplicate files. Upload the actual Texas Franchise Tax Annual Report PDFs for 2022–2025 | `Quarterly state tax returns/` | **Jun 16** |
 | F6 | **2022 Q1 and Q2 state quarterly returns missing** — no Q1 or Q2 2022 state folders exist at all. Create `2022/QuarterlyTaxes/Q1 2022/{State}/` and `Q2 2022/{State}/` and upload each state's DOR + DOL | `2022/QuarterlyTaxes/` | **Jun 18** |
 | F7 | **Rename typo folder** — `Q1_ 2023/Missour` (missing the last `i`). Rename it to `Missouri` | `2023/QuarterlyTaxes/Q1_ 2023/` | **Jun 18** |
+| F8 | **Upload 2024 + 2025 state quarterly returns** — no quarterly state folders exist for 2024 or 2025. Create `2024/QuarterlyTaxes/Q1 2024/{State}/` through `Q4 2024/{State}/` and same for 2025. Same format as 2022/2023 — one DOR + DOL PDF per state per quarter | `2024/QuarterlyTaxes/` and `2025/QuarterlyTaxes/` | **Jun 20** |
+| F9 | **Upload state annual returns for 2023, 2024, 2025** — only 2022 was found. Upload `Annual State Returns — 2023.pdf`, `Annual State Returns — 2024.pdf`, `Annual State Returns — 2025.pdf` | `2023/QuarterlyTaxes/`, `2024/QuarterlyTaxes/`, `2025/QuarterlyTaxes/` | **Jun 20** |
+| F10 | **Upload DATAFLAKE 2024 federal tax return** — `2024/Yearly Tax/` folder is completely empty | `2024/YearlyTax/` | **Jun 16** |
+| F11 | **Upload DATAFLAKE 2025 federal tax return** — `2025/Yearly Tax/` folder is completely empty | `2025/YearlyTax/` | **Jun 16** |
+| F12 | **Clarify State Amendment file** — `A1_DATAFLAKE_Form1065_2023_StateAmendment.pdf` is in the docket but not exhibit-named. Is this a separate amended filing? If yes, confirm and we'll assign it exhibit number A1b-amend. If it's already included in A1b, ignore | Already in docket — just reply Yes/No | **Jun 16** |
 
 ---
 
