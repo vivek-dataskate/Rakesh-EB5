@@ -74,7 +74,7 @@ All UNMAPPED files and old A2 folder contents have been manually resolved. **Do 
 
 **Sync routine note:** Add ignore rule — never copy `.html` Shiva instruction files or `.md` files to docket (see Part 3 ignore rules below).
 
-### ✅ COMPLETED THIS SESSION (June 12–13, 2026)
+### ✅ COMPLETED — June 12–13 Session A (overnight runs + morning verification)
 
 | Item | Status |
 |------|--------|
@@ -88,6 +88,25 @@ All UNMAPPED files and old A2 folder contents have been manually resolved. **Do 
 | `SHIVA_INSTRUCTIONS.html` updated with fix section + uploaded to source Drive folder | ✅ June 13 |
 | New `⚠️ SHIVA — 6 FIXES NEEDED` sheet created in source folder | ✅ June 13 |
 | FOR_SHIVA.md updated with FIXES NEEDED section | ✅ Committed 0a9509a |
+
+### ✅ COMPLETED — June 13 Session B (~11:00–13:30 UTC)
+
+| Item | Status |
+|------|--------|
+| Verified SYNC_LOG T0206 + T0630 — all 5 next-session items confirmed | ✅ |
+| A1b (2023 federal return) confirmed synced by T0630 run | ✅ |
+| A5 naming design gap fixed: `A5_{YEAR}_{ClientFolderName}_{filename}` | ✅ Committed 6b489f7 |
+| F8–F12 added to Shiva task list (FOR_SHIVA.md + plan) | ✅ Committed 6b489f7 |
+| D1–D8: all stale/duplicate files deleted via rclone (A9 folder, B9 folder, 50 A7 root PDFs, 4 stale A1 files, old State Annual dup) | ✅ June 13 ~13:00 UTC |
+| Plan updated with completed deletions + A1a size discrepancy flag | ✅ Committed 6d4fa53 |
+| Docket sync re-triggered — will now copy A5 vendor contracts with fixed naming | ✅ June 13 ~13:30 UTC |
+
+### ⏳ VERIFY FIRST IN NEXT SESSION
+
+1. **A5 vendor contracts** — check `A5_Vendor_Contracts_MSA/{2022,2023,2024,2025}/` are populated from the sync triggered ~13:30 UTC. Each folder should have files named `A5_{YEAR}_{ClientFolderName}_MSA.pdf` (or similar). Check the new `SYNC_LOG_2026-06-13T*.md` in `99_Admin/` for count and any errors.
+2. **A1a size discrepancy** — two `A1a_DF_Federal_Return_2022.pdf` files remain (627KB vs 217KB). Vivek must open both in Drive and delete the wrong one. Until resolved, A1a status is ⚠.
+3. **Shiva F1–F4 deadline was Jun 14** — check if NY Q4 DOR, MO Q3 DOR, Q3-2023-2 cleanup, and misplaced 941 have been actioned. Re-trigger sync if yes.
+4. **F12 answer from Shiva** — is `A1_DATAFLAKE_Form1065_2023_StateAmendment.pdf` a standalone exhibit or included in A1b? Assign exhibit number or close.
 
 ### ✅ VERIFIED — June 13, 2026 ~13:00 UTC
 
