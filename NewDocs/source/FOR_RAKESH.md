@@ -113,10 +113,12 @@ Upload responses to source Drive folder into:
 - Search "DATAFLAKE LLC" → download Certificate of Formation (~$1)
 - Upload as `Formation_Docs/Certificate_of_Formation.pdf`
 
-### 6. Profit-Sharing Resolution
-- Is there a written resolution that set profit split to Bhargavi 60% / Raghuram 20% / Vivek 20%?
-- **If yes:** scan and upload as `Formation_Docs/ProfitShare_Resolution.pdf`
-- **If no:** mention in your Barnett reply — he will draft one
+### 6. Profit-Sharing — Confirmed in Operating Agreement (No Separate Resolution Needed)
+- **VERIFIED:** Article III, Section 3.1 of the Operating Agreement explicitly sets: Bhargavi 60% / Raghuram 20% / Vivek 20% — effective March 7, 2022 (date of formation).
+- No standalone profit-sharing resolution was ever needed or issued.
+- **Tell Barnett:** "Profit allocation is established in the Operating Agreement, Article III, Section 3.1, effective March 7, 2022. No separate profit-sharing resolution exists or is needed."
+- The OA (A8b) is already in Docket → A8_Formation_Docs/. No new upload needed.
+- **TASK 6: COMPLETE — no action required.**
 
 ### 7. Bhargavi's BofA -5127 Statements (Jan–Apr 2024)
 - Bhargavi logs into Bank of America online → Statements → account -5127
@@ -170,7 +172,7 @@ Priority: Cerebral Tech, MBI Solutions, TEKsystems, Randstad, Beacon Hill, MWIDM
 | 3 | Send HR emails to Omkar / TenXLabs / CGI | **Jun 13** | [ ] Pending |
 | 4 | Read Operating Agreement for sweat equity | Jun 13 | [~] Filed in Docket A8 — READ IT |
 | 5 | Download Certificate of Formation (TX SOS) | Jun 16 | [ ] Pending (AOI filed, need official cert) |
-| 6 | Find/confirm Profit-Sharing Resolution | Jun 16 | [ ] Pending |
+| 6 | Profit-sharing split (60/20/20) | Jun 16 | [x] DONE — OA Article III §3.1 (Mar 7, 2022). No separate resolution needed. |
 | 7 | Bhargavi: BofA -5127 **Jan–Apr 2024** statements | Jun 16 | [~] PARTIAL — May-Dec 2024 + 2025/2026 filed; **Jan-Apr 2024 still needed** |
 | 8 | Bhargavi: US tax returns 2023/24/25 | Jun 18 | [~] PARTIAL — 2023 joint filed (B1a); **2024 and 2025 still needed** |
 | 9 | Bhargavi: India ITRs FY2019–FY2022-23 | Jun 18 | [ ] Pending |

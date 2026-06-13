@@ -49,6 +49,14 @@
 CPA_Attestation/
 Capital_Account/
 Employment_DATAFLAKE/
+Cover_Letter/
+Vendor_MSA/
+Invoices/
+Invoices/2022/
+Invoices/2023/
+Invoices/2024/
+Invoices/2025/
+Invoices/2026/
 ```
 
 The year folders (2022/, 2023/, 2024/, 2025/, 2026/) already exist.
@@ -222,12 +230,54 @@ Inside each year folder, create subfolders: BankStatements/, Financials/, Quarte
 
 ---
 
+### COVER LETTER — put in Cover_Letter/
+
+| # | Document | Folder | By When | Done? |
+|---|----------|--------|---------|-------|
+| 103 | **Cover Letter** — transmittal/summary letter from Shiva's firm covering the financial package for NOID response | `Cover_Letter/` | **Jun 18** | [ ] |
+
+*This letter should state that all attached financial statements are true and accurate to the best of your knowledge as CPA, and summarize DATAFLAKE's financial health and operations.*
+
+---
+
+### VENDOR MSAs — put in Vendor_MSA/
+
+One file per client or vendor. Name each file clearly: `MSA_ClientName_YYYY.pdf`
+
+| # | Document | Folder | By When | Done? |
+|---|----------|--------|---------|-------|
+| 104 | MSA — Client/Vendor 1 | `Vendor_MSA/` | Jun 20 | [ ] |
+| 105 | MSA — Client/Vendor 2 | `Vendor_MSA/` | Jun 20 | [ ] |
+| 106 | MSA — Client/Vendor 3 | `Vendor_MSA/` | Jun 20 | [ ] |
+| 107 | MSA — Client/Vendor 4 | `Vendor_MSA/` | Jun 20 | [ ] |
+| 108 | MSA — Client/Vendor 5 | `Vendor_MSA/` | Jun 20 | [ ] |
+
+*Upload ALL MSAs you have — add more rows as needed. These prove DATAFLAKE had real business contracts.*
+
+---
+
+### INVOICES BY YEAR AND VENDOR — put in Invoices/{year}/
+
+One PDF per vendor per year (or a combined annual invoice summary per vendor). Name files: `Invoice_VendorName_YYYY.pdf`
+
+| # | Year | Folder | By When | Done? |
+|---|------|--------|---------|-------|
+| 109 | All vendor invoices — 2022 | `Invoices/2022/` | Jun 20 | [ ] |
+| 110 | All vendor invoices — 2023 | `Invoices/2023/` | Jun 20 | [ ] |
+| 111 | All vendor invoices — 2024 | `Invoices/2024/` | Jun 20 | [ ] |
+| 112 | All vendor invoices — 2025 | `Invoices/2025/` | Jun 20 | [ ] |
+| 113 | All vendor invoices — 2026 (YTD May) | `Invoices/2026/` | Jun 20 | [ ] |
+
+*Include both outgoing invoices (DATAFLAKE billed to clients) and incoming invoices (vendors billed to DATAFLAKE). These prove business revenue and operating expenses.*
+
+---
+
 ## DEADLINE SUMMARY
 
 | By When | What |
 |---------|------|
 | **Jun 16** | Federal returns (1065) all 4 years + TX Franchise annual reports |
-| **Jun 18** | All quarterly payroll returns + all financial statements + CPA letter + W-2/1099 |
-| **Jun 20** | All 53 bank statements (Jan 2022–May 2026) + capital account ledgers |
+| **Jun 18** | All quarterly payroll returns + all financial statements + CPA letter + W-2/1099 + **Cover Letter** |
+| **Jun 20** | All 53 bank statements (Jan 2022–May 2026) + capital account ledgers + **all Vendor MSAs** + **all Invoices (2022–2026)** |
 
 *Questions? Message Vivek. Do NOT upload to any other folder.*

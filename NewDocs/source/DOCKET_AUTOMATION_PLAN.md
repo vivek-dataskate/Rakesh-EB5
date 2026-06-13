@@ -115,12 +115,13 @@ All UNMAPPED files and old A2 folder contents have been manually resolved. **Do 
 
 4. **⚠ ANOMALY — Shiva task tracker rows 17–24 show "Done"** for 2024 Q1–Q4 and 2025 Q1–Q4 state quarterly (last modified 10:57 UTC). But T0630 scan (06:30 UTC) found NO quarter-state subfolders in 2024/2025 source. Either: (a) Shiva uploaded 2024/2025 data between 06:30 and 10:57 UTC and it's waiting to be picked up, OR (b) "Done" was marked prematurely. **Re-trigger sync after F1–F4 are fixed (by Jun 14 EOD) to pick up any new 2024/2025 data Shiva may have uploaded.**
 
-### ⏳ VERIFY FIRST IN NEXT SESSION
+### ⏳ OPEN ITEMS (Jun 13 new session)
 
-1. **F1–F4 actioned by Shiva** — check Jun 14. If fixed, re-trigger sync and verify in `99_Admin/SYNC_LOG_*.md`.
-2. **2024/2025 state quarterly anomaly** — after re-trigger, check if 2024/2025 A2 State_Quarterly folders are now populated (would resolve the tracker "Done" mystery).
-3. **A1a** — Vivek must delete the wrong A1a file. Then mark ✅ in DOCKET_FILE_IDS.md.
-4. **F12** — Vivek/Shiva: is `A1b_DF_Federal_Return_2023_Amendment.pdf` a standalone exhibit (A1b-amendment) or just supporting A1b? Assign exhibit label or close.
+1. **F1–F2 BACKLOG** — payroll portal access needed; no change yet.
+2. **F3/F4** — ✅ RESOLVED (sync handled naturally).
+3. **A1a** — Vivek must delete 627KB copy (ID `1O2lO1RgFAnmrfYOklzqHGfxZKA-8D3z-`) from Drive. See note in Completed Deletions section above.
+4. **2024/2025 state quarterly anomaly** — sync re-triggered Jun 13 new session; check new SYNC_LOG to see if 2024/2025 data appeared.
+5. **F12** — Vivek/Shiva: is `A1b_DF_Federal_Return_2023_Amendment.pdf` a standalone exhibit (A1b-amendment) or just supporting A1b?
 
 ### ✅ VERIFIED — June 13, 2026 ~13:00 UTC
 
@@ -154,10 +155,12 @@ All 8 items deleted and verified:
 | D7 | `A1b_DF_Federal_Return_2023.pdf` (redundant duplicate) | ✅ Deleted; canonical `_DATAFLAKE_Taxreturns_2023` copy kept |
 | D8 | `A1_DATAFLAKE_Form1065_2023_StateAmendment.pdf` (old format) | ✅ Deleted; `A1b_DF_Federal_Return_2023_Amendment.pdf` kept |
 
-**⚠ OPEN — A1a size discrepancy (Vivek must check):**
-Two files named `A1a_DF_Federal_Return_2022.pdf` remain in A1 folder with different sizes: 627KB and 217KB.
-The 627KB copy matches the old `A1_DATAFLAKE_Form1065_2022.pdf` (deleted). The 217KB copy is unknown origin.
-Open in Drive, verify which is the complete 2022 Form 1065, then delete the wrong one.
+**⚠ A1a — DELETE 627KB COPY (Vivek action required):**
+Two files named `A1a_DF_Federal_Return_2022.pdf` still exist in A1 folder:
+- 217KB (ID `19jBTc15jSMQz5Q7qrYb0ML6MUw3_vaFO`, Jun 12) — **KEEP** — MD5-verified match to current source file `DATAFLAKE_FedReturn_2022_processed.pdf` (also 217KB, modified Jun 13 11:36 UTC)
+- 627KB (ID `1O2lO1RgFAnmrfYOklzqHGfxZKA-8D3z-`, Jun 13 10:53) — **DELETE** — orphaned copy, no matching file in source folder at this size
+
+Vivek: delete the 627KB copy in Drive UI (right-click → Remove). Once deleted, mark A1a ✅ in DOCKET_FILE_IDS.md.
 
 ### ⏳ STILL OPEN — ASK SHIVA
 
